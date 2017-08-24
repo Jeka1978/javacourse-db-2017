@@ -13,19 +13,14 @@ public class NewMain {
         List<Client> list = new ArrayList<>();
 
 
-        list.add(new Client("John",100));
-        list.add(new Client("Vasya",300));
-        list.add(new Client("Pert",50));
-        list.add(new Client("Nadia",100));
+        list.add(new Client("Arnold",100));
+        list.add(new Client("Stallone",300));
+        list.add(new Client("Chuck Norris",50));
+        list.add(new Client("Chuck Norris",50));
 
-        ListUtil.printSorted(list);
+        ListUtil.removeClientsByName(list,"Chuck Norris");
 
-        ListUtil.printSorted(list, new Comparator<Client>() {
-            @Override
-            public int compare(Client o1, Client o2) {
-                return o1.getBonus()-o2.getBonus();
-            }
-        });
+        System.out.println(list);
 
 
     }

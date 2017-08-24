@@ -2,10 +2,7 @@ package com.db.collections;
 
 import com.db.enums.Person;
 
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.Comparator;
-import java.util.List;
+import java.util.*;
 
 /**
  * Created by Evegeny on 24/08/2017.
@@ -13,6 +10,14 @@ import java.util.List;
 public class ListUtil {
 
     public static void removeClientsByName(List<Client> clients, String name) {
+        Iterator<Client> iterator = clients.iterator();
+        while (iterator.hasNext()) {
+            Client client = iterator.next();
+            if (client.getName().equalsIgnoreCase(name)) {
+                iterator.remove();
+            }
+        }
+
 
     }
 
