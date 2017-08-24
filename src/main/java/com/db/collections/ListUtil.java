@@ -12,7 +12,7 @@ import java.util.List;
  */
 public class ListUtil {
 
-    public static void removeClientByName(List<Client> clients, String name) {
+    public static void removeClientsByName(List<Client> clients, String name) {
 
     }
 
