@@ -11,7 +11,11 @@ public class Main {
         MailSender mailSender = new MailSender();
         while (true) {
             MailInfo mailInfo = new MailInfo(dataFactory.getNumberBetween(1, 7));
-            mailSender.sendMail(mailInfo);
+            try {
+                mailSender.sendMail(mailInfo);
+            } catch (Exception e) {
+                System.out.println(e.getMessage());
+            }
             Thread.sleep(1000);
         }
     }
