@@ -10,7 +10,7 @@ public class Main {
         DataFactory dataFactory = new DataFactory();
         MailSender mailSender = new MailSender();
         while (true) {
-            MailInfo mailInfo = new MailInfo(dataFactory.getNumberBetween(1, 7));
+            MailInfo mailInfo = new MailInfo(dataFactory.getNumberBetween(1, 4));
             try {
                 mailSender.sendMail(mailInfo);
             } catch (Exception e) {

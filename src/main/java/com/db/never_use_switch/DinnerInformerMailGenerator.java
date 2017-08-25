@@ -3,10 +3,10 @@ package com.db.never_use_switch;
 /**
  * Created by Evegeny on 25/08/2017.
  */
-@MailCode(2)
-public class EmailCallbackMailGenerator implements MailGenerator {
+@MailCode(3)
+public class DinnerInformerMailGenerator implements MailGenerator {
     @Override
     public String generateHtml(MailInfo mailInfo) {
-        return "don't call us we call you...";
+        return "А может уже пора обедать, уже?";
     }
 }
