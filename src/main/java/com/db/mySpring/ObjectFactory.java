@@ -29,7 +29,8 @@ public class ObjectFactory {
     }
 
 
-    public <T> T createObject(Class<T> type) throws IllegalAccessException, InstantiationException {
+    @SneakyThrows
+    public <T> T createObject(Class<T> type) {
         type = resolveImpl(type);
         T t = type.newInstance();
 
