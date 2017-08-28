@@ -1,7 +1,5 @@
-package com.db;
+package com.db.mySpring;
 
-import com.db.heroes.DataFactoryHolder;
-import com.db.mySpring.InjectRandomInt;
 import lombok.SneakyThrows;
 import org.reflections.ReflectionUtils;
 

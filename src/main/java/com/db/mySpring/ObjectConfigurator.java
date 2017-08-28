@@ -1,4 +1,4 @@
-package com.db;
+package com.db.mySpring;
 
 /**
  * Created by Evegeny on 28/08/2017.
