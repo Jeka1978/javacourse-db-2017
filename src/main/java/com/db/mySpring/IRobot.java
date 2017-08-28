@@ -1,10 +1,14 @@
 package com.db.mySpring;
 
+import org.springframework.transaction.annotation.Transactional;
+
 import javax.annotation.PostConstruct;
 
 /**
  * Created by Evegeny on 28/08/2017.
  */
+@Transactional
+@Benchmark
 public class IRobot {
     private Speaker speaker;
 
