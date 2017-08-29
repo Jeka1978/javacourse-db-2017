@@ -1,8 +1,6 @@
 package com.db.tdd;
 
 import lombok.Data;
-import lombok.SneakyThrows;
-import org.springframework.transaction.annotation.Transactional;
 
 /**
  * Created by Evegeny on 25/08/2017.

@@ -5,10 +5,8 @@ import org.reflections.ReflectionUtils;
 import org.reflections.Reflections;
 
 import javax.annotation.PostConstruct;
-import java.lang.reflect.InvocationHandler;
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
-import java.lang.reflect.Proxy;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Set;
@@ -33,32 +31,23 @@ public class ObjectFactory {
         for (Class<? extends ObjectConfigurator> aClass : classes) {
             objectConfigurators.add(aClass.newInstance());
         }
+        Set<Class<? extends ProxyConfigurator>> classSet = scanner.getSubTypesOf(ProxyConfigurator.class);
+        for (Class<? extends ProxyConfigurator> aClass : classSet) {
+            proxyConfigurators.add(aClass.newInstance());
+        }
     }
 
 
     @SneakyThrows
     public <T> T createObject(Class<T> type) {
         type = resolveImpl(type);
-        final T t = type.newInstance();
+        T t = type.newInstance();
         configure(t);
         invokeInitMethod(type, t);
 
-
-        if (type.isAnnotationPresent(Benchmark.class)) {
-           return (T) Proxy.newProxyInstance(type.getClassLoader(), type.getInterfaces(), new InvocationHandler() {
-                @Override
-                public Object invoke(Object proxy, Method method, Object[] args) throws Throwable {
-                    System.out.println("************START BENCHMARK for method "+method.getName()+" *********************");
-                    long start = System.nanoTime();
-                    Object retVal = method.invoke(t, args);
-                    long end = System.nanoTime();
-                    System.out.println(end-start);
-                    System.out.println("************END BENCHMARK for method "+method.getName()+" *********************");
-                    return retVal;
-                }
-            });
+        for (ProxyConfigurator proxyConfigurator : proxyConfigurators) {
+            t = proxyConfigurator.wrapWithProxyIfNeeded(t,type);
         }
-
 
         return t;
     }

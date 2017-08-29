@@ -1,13 +1,10 @@
 package com.db.mySpring;
 
-import org.springframework.transaction.annotation.Transactional;
-
 import javax.annotation.PostConstruct;
 
 /**
  * Created by Evegeny on 28/08/2017.
  */
-@Transactional
 @Benchmark
 public class IRobot {
     private Speaker speaker;
@@ -21,7 +18,7 @@ public class IRobot {
     private Cleaner cleaner;
 
     @InjectByType
-    public void setSpeaker(Speaker speaker) {
+    private void setSpeaker(Speaker speaker) {
         this.speaker = speaker;
     }
 
