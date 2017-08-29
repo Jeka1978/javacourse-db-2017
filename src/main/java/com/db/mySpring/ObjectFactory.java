@@ -1,5 +1,6 @@
 package com.db.mySpring;
 
+import lombok.Getter;
 import lombok.SneakyThrows;
 import org.reflections.ReflectionUtils;
 import org.reflections.Reflections;
@@ -17,6 +18,7 @@ import java.util.Set;
 public class ObjectFactory {
     private static ObjectFactory ourInstance = new ObjectFactory();
     private Config config = new JavaConfig();
+    @Getter
     private Reflections scanner = new Reflections("com.db");
     private List<ObjectConfigurator> objectConfigurators = new ArrayList<>();
     private List<ProxyConfigurator> proxyConfigurators = new ArrayList<>();
